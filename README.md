@@ -60,12 +60,5 @@ The patient is Normal and healthy.
    - Compare with Logistic Regression or Random Forest
    - Create a Streamlit web app for real-time predictions
 
------------------------------------------------------------
-👩‍💻 AUTHOR:
------------------------------------------------------------
-   Name: Pooja N
-   Role: Data Analyst | Machine Learning Enthusiast
-   Project: Heart Disease Prediction using Naive Bayes
-===========================================================
-"""
+
 
