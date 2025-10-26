@@ -1,0 +1,87 @@
+# ==============================
+# 🫀 HEART DISEASE PREDICTION USING NAIVE BAYES
+# ==============================
+
+import pandas as pd
+#import numpy as np
+import warnings
+warnings.filterwarnings('ignore')
+
+#data Collection
+df = pd.read_excel("D:/Heart_Disease_Prediction.csv.xlsx")
+print(df.head())
+
+
+
+#data preprocessing
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+
+df['Sex'] = le.fit_transform(df['Sex'])
+df['Chest pain type'] = le.fit_transform(df['Chest pain type'])
+df['RestingBP'] = le.fit_transform(df['RestingBP'])
+df['Exercise angina'] = le.fit_transform(df['Exercise angina'])
+df['Slope of ST'] = le.fit_transform(df['Slope of ST'])
+
+print(df)
+
+x=df.drop(columns=['Heart Disease']) #Input
+
+y=df['Heart Disease'] #output
+
+print("XXXX",x)
+print("YYYY",y)
+
+
+
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=12)
+
+
+#X_train - 80% input data
+#Y_train - 20% output data
+#X_train - 80% input data
+#Y_train - 20% output data
+
+print("DF",df.shape)
+print("x_train",x_train.shape)
+print("x_test",x_test.shape)
+print("y_train",y_train.shape)
+print("y_test",y_test.shape)
+
+
+#model training
+
+from sklearn.naive_bayes import GaussianNB
+NB = GaussianNB()
+
+NB.fit(x_train, y_train)
+
+#Model Evaluation
+
+y_pred=NB.predict(x_test)
+
+print("y_pred",y_pred)
+print("y_test",y_test)
+
+
+from sklearn.metrics import accuracy_score
+print('ACCURACY is'), accuracy_score(y_test,y_pred)
+
+#model prediction
+
+sample_input = [[29, 0, 2, 100, 106, 1, 2, 80, 1, 1.0, 1, 0, 2]]  # example input
+
+# Convert input into DataFrame to match columns exactly
+
+sample_df = pd.DataFrame(sample_input, columns=x.columns)
+
+print("\n🩺 Prediction Result:")
+
+testprediction = NB.predict(sample_df)
+
+if testprediction[0] == 1:
+    print("The patient has Heart Disease. Please consult a doctor.")
+else:
+    print("The patient is Normal and healthy.")
+
