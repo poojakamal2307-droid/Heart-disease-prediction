@@ -1,91 +1,73 @@
-# Heart-disease-prediction
+"""
+===========================================================
+🫀 HEART DISEASE PREDICTION USING NAIVE BAYES CLASSIFIER
+===========================================================
 
-📘 Project Overview
+📘 Project Overview:
+This Python project predicts whether a person is likely to have 
+heart disease based on their health attributes using a 
+Gaussian Naive Bayes (GNB) Machine Learning model.
 
-This project aims to predict the likelihood of heart disease based on various health-related attributes using the Naive Bayes classification algorithm.
-It uses machine learning techniques to analyze medical data and classify whether a person is at risk of heart disease or not.
+It involves reading a medical dataset, preprocessing data, 
+training a model, and making predictions.
 
-#🧠 Key Steps Involved
-#1. Data Collection
+-----------------------------------------------------------
+🧠 STEPS INVOLVED:
+-----------------------------------------------------------
 
-The dataset (Heart_Disease_Prediction.csv.xlsx) contains patient health information such as age, sex, blood pressure, cholesterol level, etc.
+1️⃣ Data Collection:
+   - The dataset 'Heart_Disease_Prediction.csv.xlsx' is loaded using pandas.
+   - It contains medical details such as age, sex, cholesterol, blood pressure, etc.
 
-The data is loaded using Pandas for analysis.
-df = pd.read_excel("D:/Heart_Disease_Prediction.csv.xlsx")
-print(df.head())
+2️⃣ Data Preprocessing:
+   - Label Encoding is applied to convert categorical values into numeric form.
+   - Features (X) and target (Y) are separated for training.
 
-#2. Data Preprocessing
+3️⃣ Data Splitting:
+   - The dataset is divided into 80% training and 20% testing using train_test_split.
 
-Used Label Encoding to convert categorical variables into numeric form.
+4️⃣ Model Training:
+   - Gaussian Naive Bayes (from sklearn) is used to train the model on the training data.
 
-Prepared the dataset by separating features (X) and target (Y).
+5️⃣ Model Evaluation:
+   - Predictions are compared with actual test data.
+   - Accuracy of the model is calculated using accuracy_score.
 
-from sklearn.preprocessing import LabelEncoder
-le = LabelEncoder()
-df['Sex'] = le.fit_transform(df['Sex'])
-df['Chest pain type'] = le.fit_transform(df['Chest pain type'])
-df['Exercise angina'] = le.fit_transform(df['Exercise angina'])
-df['Slope of ST'] = le.fit_transform(df['Slope of ST'])
+6️⃣ Model Prediction:
+   - A sample input can be tested to check if the patient is at risk of heart disease.
 
-#3. Data Splitting
+-----------------------------------------------------------
+🧩 TECHNOLOGIES USED:
+-----------------------------------------------------------
+   - Python
+   - Pandas
+   - Scikit-learn
+   - NumPy
 
-The dataset is divided into training and testing sets using an 80:20 ratio.
-
-from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=12)
-
-#3. Data Splitting
-
-The dataset is divided into training and testing sets using an 80:20 ratio.
-
-from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=12)
-
-#5. Model Evaluation
-
-Predicted outcomes are compared with actual results using accuracy_score.
-
-from sklearn.metrics import accuracy_score
-print('Accuracy:', accuracy_score(y_test, y_pred))
-
-#6. Prediction
-
-The model can predict heart disease risk for new patient data.
-
-sample_input = [[29, 0, 2, 100, 106, 1, 2, 80, 1, 1.0, 1, 0, 2]]
-sample_df = pd.DataFrame(sample_input, columns=x.columns)
-prediction = NB.predict(sample_df)
-
-#Output Example
+-----------------------------------------------------------
+🎯 OUTPUT EXAMPLE:
+-----------------------------------------------------------
 🩺 Prediction Result:
 The patient has Heart Disease. Please consult a doctor.
 
-#🧩 Technologies Used
+OR
 
-Python
+🩺 Prediction Result:
+The patient is Normal and healthy.
 
-Pandas
+-----------------------------------------------------------
+📈 FUTURE ENHANCEMENTS:
+-----------------------------------------------------------
+   - Add visualizations (heatmaps, correlation plots)
+   - Compare with Logistic Regression or Random Forest
+   - Create a Streamlit web app for real-time predictions
 
-Scikit-learn
+-----------------------------------------------------------
+👩‍💻 AUTHOR:
+-----------------------------------------------------------
+   Name: Pooja N
+   Role: Data Analyst | Machine Learning Enthusiast
+   Project: Heart Disease Prediction using Naive Bayes
+===========================================================
+"""
 
-NumPy
-
-#📊 Algorithm Used
-
-Naive Bayes Classifier (GaussianNB)
-The Naive Bayes model is chosen because it is simple, efficient, and works well with categorical data and medical datasets.
-
-#📈 Performance Metrics
-
-Accuracy Score
-
-Precision & Recall (optional for extension)
-
-Confusion Matrix (can be added for visualization)
-#Future Enhancements
-
-Add data visualization (correlation heatmap, feature importance)
-
-Compare with other models like Logistic Regression, SVM, or Random Forest
-
-Build a Streamlit web app for real-time prediction
