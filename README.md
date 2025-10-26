@@ -1,6 +1,4 @@
-
-===========================================================
-🫀 HEART DISEASE PREDICTION USING NAIVE BAYES CLASSIFIER
+#🫀 HEART DISEASE PREDICTION USING NAIVE BAYES CLASSIFIER
 ===========================================================
 
 📘 Project Overview:
